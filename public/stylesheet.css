@@ -18,6 +18,7 @@ input {
     border: none;
     border-bottom: 2px solid silver;
     color: silver;
+    -webkit-animation: caret-col 2s linear infinite;
 }
 
 input:focus {
@@ -358,7 +359,7 @@ button:hover {
     position: relative;
     margin-bottom: 40px;
     box-shadow: 0 0 10px grey;
-    border-radius: 5px 20px 5px;
+    border-radius: 5px;
 }
 
 .news-article:hover {
@@ -461,13 +462,14 @@ button:hover {
 
 .add .fa {
     font-size: 1.35em;
-    padding-left: 10px;
-    padding-right: 25px;
+    padding-left: 5px;
+    padding-right: 20px;
 }
 
 .add a {
     margin-top: 0;
     padding-top: 0;
+    padding-left: 5px;
 }
 
 .add:hover {
@@ -573,6 +575,11 @@ button:hover {
 
 .bio-update textarea {
     width: 75%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 30px;
+    -webkit-animation: caret-col 2s linear infinite;
 }
 
 .bio-update button {
@@ -586,6 +593,7 @@ button:hover {
     color: #f4f7f5;
     padding: 10px;
     display: inline-block;
+    border-radius: 5px;
 }
 
 .container .text .form {
@@ -606,6 +614,7 @@ button:hover {
     color: white;
     border: 2px solid white;
     width: 100%;
+    margin-top: 10px;
 }
 /* ------------------------------- COMPOSE VIEW --------------------------------
 ------------------------------------------------------------------------------*/
@@ -628,7 +637,7 @@ button:hover {
     padding: 10px 0;
     border: none;
     background: #f4f7f5;
-    -webkit-animation: caret-col .35s linear infinite;
+    -webkit-animation: caret-col 2s linear infinite;
 }
 
 @-webkit-keyframes caret-col {
@@ -720,6 +729,11 @@ button:hover {
 .red-back {
     background: #ed1c24;
 }
+
+.post-about {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
 /* -------------------------------- COMMENTS -----------------------------------
 ------------------------------------------------------------------------------*/
 .post-comment {
@@ -733,7 +747,7 @@ button:hover {
     width: 70%;
     margin-right: 15%;
     font-size: 1.2em;
-    -webkit-animation: caret-col .35s linear infinite;
+    -webkit-animation: caret-col 2s linear infinite;
 }
 
 .post-comment button {

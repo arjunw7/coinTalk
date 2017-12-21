@@ -95,7 +95,7 @@ export class Post extends React.Component {
                     </div>
                     <div className="user">
                         <Link to={userUrl + data.id}><h1>Post by: {data.first_name} {data.last_name}</h1></Link>
-                        <h2>About Me:</h2>
+                        <h2 className="post-about">About the author:</h2>
                         <p className="bio">{data.about}</p>
                     </div>
                 </div>
