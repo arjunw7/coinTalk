@@ -210,6 +210,26 @@ function getAuthors(user_id) {
     });
 }
 
+//Post a comment:
+function postComment(commentator_id, post_num, comment) {
+    return db.query(`INSERT INTO comments (commentator_id, post_num, comment)
+        VALUES ($1, $2, $3)`, [commentator_id, post_num, comment])
+}
+
+//Get comments:
+function getComments(post_num) {
+    return db.query(`SELECT comments.id, commentator_id, comment, users.id, first_name, last_name
+        FROM comments
+        JOIN posts
+        ON (posts.id = $1)
+        LEFT JOIN users
+        ON (commentator_id = users.id)
+        WHERE (post_num = $1)
+        ORDER BY comments.id DESC`, [post_num])
+        .then((results) => {
+            return results.rows;
+        })
+}
 //EXPORTS-----------------------------------------------------------------------
 //------------------------------------------------------------------------------
 module.exports = {
@@ -229,5 +249,7 @@ module.exports = {
     getBookmarks: getBookmarks,
     follow: follow,
     unFollow: unFollow,
-    getAuthors: getAuthors
+    getAuthors: getAuthors,
+    postComment: postComment,
+    getComments: getComments
 }

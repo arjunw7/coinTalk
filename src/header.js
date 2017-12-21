@@ -56,12 +56,12 @@ class Header extends React.Component {
                 <div id="menu" className={visibility} onClick={this.hideMenu}>
                     <div className="background">
                     </div>
-                    <div className="nav-link"><Link to="/"><div>Home</div></Link></div>
-                    <div className="nav-link"><Link to="/news/"><div>News</div></Link></div>
-                    <div className="nav-link"><Link to="/profile/"><div>Profile</div></Link></div>
-                    <div className="nav-link"><Link to="/bookmarks/"><div>Bookmarks</div></Link></div>
-                    <div className="nav-link"><Link to="/follows/"><div>Following</div></Link></div>
-                    <div className="nav-link"><a href="/logout"><div>Logout</div></a></div>
+                    <div className="nav-link"><Link to="/"><div><i className="fa fa-home" aria-hidden="true"></i> Home</div></Link></div>
+                    <div className="nav-link"><Link to="/news/"><div><i className="fa fa-newspaper-o" aria-hidden="true"></i> News</div></Link></div>
+                    <div className="nav-link"><Link to="/profile/"><div><i className="fa fa-user" aria-hidden="true"></i> Profile</div></Link></div>
+                    <div className="nav-link"><Link to="/bookmarks/"><div><i className="fa fa-bookmark-o" aria-hidden="true"></i> Bookmarks</div></Link></div>
+                    <div className="nav-link"><Link to="/follows/"><div><i className="fa fa-star-o" aria-hidden="true"></i> Following</div></Link></div>
+                    <div className="nav-link"><a href="/logout"><div><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</div></a></div>
                 </div>
             </div>
             )

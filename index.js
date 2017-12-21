@@ -265,8 +265,31 @@ app.post('/unfollow-request/:id', (req, res) => {
         console.log(err);
     })
 })
+
+//Post a comment:
+app.post('/comment/:id', (req, res) => {
+    console.log(req.body.commentData);
+    db.postComment(req.session.user.id, req.params.id, req.body.commentData)
+    .then((results) => {
+        res.json({
+            success: true
+        })
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+})
 //------------------------------------------------------------------------------
 //GET REQUESTS------------------------------------------------------------------
+app.get('/get-comments/:id', (req, res) => {
+    db.getComments(req.params.id)
+    .then((results) => {
+        res.json({
+            results
+        })
+    })
+})
+
 app.get('/following/', (req, res) => {
     db.getAuthors(req.session.user.id)
     .then((results) => {

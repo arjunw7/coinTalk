@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS bookmarks;
 DROP TABLE IF EXISTS follows;
+DROP TABLE IF EXISTS comments;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -33,4 +34,11 @@ CREATE TABLE follows (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     author INTEGER NOT NULL
+);
+
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    commentator_id INTEGER NOT NULL,
+    post_num INTEGER NOT NULL,
+    comment TEXT NOT NULL
 );

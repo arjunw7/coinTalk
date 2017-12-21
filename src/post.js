@@ -2,6 +2,8 @@ import React from 'react';
 import axios from './axios';
 import { Loading } from './loading';
 import { Link } from 'react-router';
+import { PostComments } from './postComments';
+import { GetComments } from './getComments';
 
 export class Post extends React.Component {
     constructor(props) {
@@ -9,6 +11,9 @@ export class Post extends React.Component {
         this.state = {};
         this.addToFavorites = this.addToFavorites.bind(this);
         this.removeFromFavorites = this.removeFromFavorites.bind(this);
+        this.addComment = this.addComment.bind(this);
+        this.commentData = this.commentData.bind(this);
+        this.getComments = this.getComments.bind(this);
     }
     componentDidMount() {
         axios.get(`/single-post/${this.props.params.id}`)
@@ -21,6 +26,7 @@ export class Post extends React.Component {
             this.setState({
                 data: data.results
             })
+            console.log(data);
         })
     }
     addToFavorites() {
@@ -43,6 +49,29 @@ export class Post extends React.Component {
             }
         })
     }
+    commentData(data) {
+        this.setState({
+            commentData: data
+        })
+        console.log(this.state.commentData);
+    }
+    addComment() {
+        const commentData = this.state;
+        const comment = commentData;
+        axios.post(`/comment/${this.props.params.id}`, comment)
+        .then((resp) => {
+            console.log(resp);
+        })
+    }
+    getComments() {
+        axios.get(`/get-comments/${this.props.params.id}`)
+        .then(({ data }) => {
+            this.setState({
+                comments: data.results
+            })
+            console.log('Comments: ', data.results);
+        })
+    }
     render() {
         if (!this.state.data) {
             return (
@@ -58,6 +87,8 @@ export class Post extends React.Component {
                     <p className="post-text">{data.post_text}</p>
                     {!this.state.favorite && <button className="bookmark green-back" onClick={this.addToFavorites}>+</button>}
                     {this.state.favorite && <button onClick={this.removeFromFavorites} className="bookmark red-back">-</button>}
+                    <PostComments onClick={this.addComment} receiveData={this.commentData} />
+                    <GetComments onClick={this.getComments} comments={this.state.comments} />
                 </div>
                 <div className="about-me">
                     <div className="others-bio-pic">
