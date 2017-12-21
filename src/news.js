@@ -3,6 +3,7 @@ import axios from './axios.js';
 import { Link } from 'react-router';
 import { Loading } from './loading';
 import { Coins } from './coinQtes';
+import { Header } from './header';
 
 export class News extends React.Component {
     constructor(props) {
@@ -28,21 +29,24 @@ export class News extends React.Component {
             )
         }
         return (
-            <div className="container">
-                <Coins />
-                <h1 className="blog-title">Latest News</h1>
-                { articles.map(article =>
-                    <div className="news-article">
-                        <a href={article.url} target="_blank">
-                            <img src={article.urlToImage} className="news-pic" />
-                            <div className="news-text">
-                                <h2 className="news-title">{article.title}</h2>
-                                <p className="description">{article.description}</p>
-                                <p>Source: {article.source.name}</p>
-                            </div>
-                        </a>
-                    </div>
-                )}
+            <div>
+                {this.props.image && <Header image={this.props.image} />}
+                <div className="container">
+                    <Coins />
+                    <h1 className="blog-title">Latest News</h1>
+                    { articles.map(article =>
+                        <div className="news-article">
+                            <a href={article.url} target="_blank">
+                                <img src={article.urlToImage} className="news-pic" />
+                                <div className="news-text">
+                                    <h2 className="news-title">{article.title}</h2>
+                                    <p className="description">{article.description}</p>
+                                    <p>Source: {article.source.name}</p>
+                                </div>
+                            </a>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

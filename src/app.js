@@ -56,7 +56,6 @@ export class App extends React.Component {
         });
         return (
             <div>
-                <Header />
                 { children }
                 <Footer />
             </div>

@@ -57,7 +57,7 @@ export class GuestHeader extends React.Component {
             <div className="header-container">
                 <div className="header">
                     <div className="hamburger" onClick={this.showMenu}><hr /><hr /><hr /></div>
-                    <div className="logo"><Link to="/"><h1>FT</h1></Link></div>
+                    <div className="logo"><Link to="/"><h1>coinTalk</h1></Link></div>
                     {!this.state.showLogin &&
                     <ul>
                         <li><Link to="/register/">Register</Link></li>
@@ -74,8 +74,8 @@ export class GuestHeader extends React.Component {
                 <div id="menu" className={visibility} onClick={this.hideMenu}>
                     <div className="background">
                     </div>
-                    <div className="nav-link"><Link to="/"><div>Home</div></Link></div>
-                    <div className="nav-link"><Link to="/news/"><div>News</div></Link></div>
+                    <div className="nav-link"><Link to="/"><div><i className="fa fa-home" aria-hidden="true"></i> Home</div></Link></div>
+                    <div className="nav-link"><Link to="/news/"><div><i className="fa fa-newspaper-o" aria-hidden="true"></i> News</div></Link></div>
                 </div>
             </div>
             )

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getUserProfile } from './actions';
 import { Loading } from './loading';
 
-class Header extends React.Component {
+export class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +29,6 @@ class Header extends React.Component {
             [name]: value
         })
     }
-    componentDidMount() {
-        this.props.getUserProfile();
-    }
     render() {
         var visibility = "initial";
         if (this.state.showMenu === "show") {
@@ -39,19 +36,17 @@ class Header extends React.Component {
         } else if (this.state.showMenu === "hide") {
             visibility = "hide";
         }
-        if (!this.props.loggedUser) {
+        if (!this.props.image) {
             return (
                 <Loading />
             )
         }
-        const loggedUser = this.props.loggedUser;
-        console.log('Logged as: ', loggedUser);
         return (
             <div className="header-container">
                 <div className="header">
                     <div className="hamburger" onClick={this.showMenu}><hr /><hr /><hr /></div>
                     <div className="logo"><Link to="/"><h1>coinTalk</h1></Link></div>
-                    <div className="profile-pic"><Link to="/profile/"><img src={loggedUser.image} /></Link></div>
+                    <div className="profile-pic"><Link to="/profile/"><img src={this.props.image} /></Link></div>
                 </div>
                 <div id="menu" className={visibility} onClick={this.hideMenu}>
                     <div className="background">
@@ -70,19 +65,19 @@ class Header extends React.Component {
 
 //REDUX INTEGRATION ------------------------------------------------------------
 //------------------------------------------------------------------------------
-
-const mapStateToProps = function(state) {
-    return {
-        loggedUser: state.loggedUser
-    }
-}
-
-const mapDispatchToProps = function(dispatch) {
-    return {
-        getUserProfile() {
-            dispatch(getUserProfile());
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+//
+// const mapStateToProps = function(state) {
+//     return {
+//         loggedUser: state.loggedUser
+//     }
+// }
+//
+// const mapDispatchToProps = function(dispatch) {
+//     return {
+//         getUserProfile() {
+//             dispatch(getUserProfile());
+//         }
+//     }
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(Header);

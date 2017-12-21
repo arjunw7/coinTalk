@@ -4,6 +4,7 @@ import { Loading } from './loading';
 import { Link } from 'react-router';
 import { PostComments } from './postComments';
 import { GetComments } from './getComments';
+import { Header } from './header';
 
 export class Post extends React.Component {
     constructor(props) {
@@ -26,7 +27,6 @@ export class Post extends React.Component {
             this.setState({
                 data: data.results
             })
-            console.log(data);
         })
     }
     addToFavorites() {
@@ -53,14 +53,13 @@ export class Post extends React.Component {
         this.setState({
             commentData: data
         })
-        console.log(this.state.commentData);
     }
     addComment() {
         const commentData = this.state;
         const comment = commentData;
         axios.post(`/comment/${this.props.params.id}`, comment)
         .then((resp) => {
-            console.log(resp);
+            this.getComments();
         })
     }
     getComments() {
@@ -69,7 +68,6 @@ export class Post extends React.Component {
             this.setState({
                 comments: data.results
             })
-            console.log('Comments: ', data.results);
         })
     }
     render() {
@@ -82,11 +80,12 @@ export class Post extends React.Component {
         const userUrl = '/user/';
         return (
             <div>
+            <Header image={this.props.image} />
                 <div className="container">
                     <h2 className="blog-title post-title">{data.title}</h2>
                     <p className="post-text">{data.post_text}</p>
-                    {!this.state.favorite && <button className="bookmark green-back" onClick={this.addToFavorites}>+</button>}
-                    {this.state.favorite && <button onClick={this.removeFromFavorites} className="bookmark red-back">-</button>}
+                    {!this.state.favorite && <button className="bookmark green-back" onClick={this.addToFavorites}><i className="fa fa-bookmark" aria-hidden="true"></i> Bookmark</button>}
+                    {this.state.favorite && <button onClick={this.removeFromFavorites} className="bookmark red-back"><i className="fa fa-bookmark-o" aria-hidden="true"></i> Remove</button>}
                     <PostComments onClick={this.addComment} receiveData={this.commentData} />
                     <GetComments onClick={this.getComments} comments={this.state.comments} />
                 </div>

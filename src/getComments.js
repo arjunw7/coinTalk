@@ -19,8 +19,8 @@ export class GetComments extends React.Component {
         return (
             <div className="comments">
                 <div>
-                    <h4>Comments <i className="fa fa-refresh green" aria-hidden="true" onClick={this.props.onClick}></i></h4>
-                    {comments.length > 1 &&
+                    <h4>Comments:</h4>
+                    {comments.length > 0 &&
                         <div>
                             {comments.map(comment =>
                             <div className="comment">

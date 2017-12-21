@@ -3,6 +3,7 @@ import axios from './axios.js';
 import { Link } from 'react-router';
 import { Loading } from './loading';
 import { PicUpload } from './picUpload';
+import { Header } from './header';
 
 export class Profile extends React.Component {
     constructor(props) {
@@ -85,9 +86,10 @@ export class Profile extends React.Component {
         const url = '/post/';
         return (
             <div>
+            <Header image={this.props.image} />
             {this.props.blog_title &&
             <div className="add">
-                <Link to="/compose/"><span>+</span> New Post</Link>
+                <Link to="/compose/"><i className="fa fa-pencil" aria-hidden="true"></i> New Post</Link>
             </div>}
                 <div className="container text">
                     {!this.props.blog_title &&
@@ -120,7 +122,7 @@ export class Profile extends React.Component {
                     <div className="user">
                         <h1>{this.props.first_name} {this.props.last_name}</h1>
                         <p className="bio">{this.props.about}</p>
-                        <p onClick={this.showAboutMe} className="edit">Edit Bio</p>
+                        <p onClick={this.showAboutMe} className="edit"><i className="fa fa-pencil" aria-hidden="true"></i> Edit Bio</p>
                         {this.state.aboutMe &&
                         <div className="bio-update">
                             <textarea name="about" rows="5" cols="80" onChange={(e) => this.handleChange(e.target.name, e.target.value) }></textarea>

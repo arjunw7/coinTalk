@@ -2,6 +2,7 @@ import React from 'react';
 import axios from './axios';
 import { Link, browserHistory } from 'react-router';
 import { Loading } from './loading';
+import { Header } from './header';
 
 export class OtherUser extends React.Component {
     constructor(props) {
@@ -62,6 +63,7 @@ export class OtherUser extends React.Component {
         const postUrl = '/post/';
         return (
             <div>
+                <Header image={this.props.image} />
                 <div className="container text">
                     <h2 className="blog-title">{profile.blog_title}</h2>
                     { userPosts.map(post =>

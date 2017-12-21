@@ -19,8 +19,6 @@ export class Register extends React.Component {
         axios.post('/register', data)
         .then(resp => {
             if (resp.data.success) {
-                console.log(data);
-                console.log('Success!');
                 location.replace('/');
             } else {
                 this.setState({
@@ -35,6 +33,8 @@ export class Register extends React.Component {
     render() {
         return (
             <div className="form">
+                <h2>Join coinTalk now!</h2>
+                <p>Create an account to have full access to posts, follow your favorite authors, bookmark your favorite stories, and more.</p>
                 {this.state.error && <div>Sorry, something went wrong. Try again!</div>}
                 <input onChange={(e) => this.handleChange(e.target.name, e.target.value) } name="first_name" type="text" placeholder="First Name" />
                 <input onChange={(e) => this.handleChange(e.target.name, e.target.value) } name="last_name" type="text" placeholder="Last Name" />

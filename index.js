@@ -184,16 +184,31 @@ app.post('/create-blog', (req, res) => {
 })
 
 //Create new post:
-app.post('/post', (req, res) => {
-    return db.createPost(req.body.title, req.body.post_text, req.session.user.id, postPlaceholder)
-    .then(() => {
-        res.json({
-            success: true
+app.post('/post', uploader.single('file'), (req, res) => {
+    if (req.file) {
+        s3.upload(req.file)
+        .then(() => {
+            return db.createPost(req.body.title, req.body.post_text, req.session.user.id, req.file.filename)
         })
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        .then(() => {
+            res.json({
+                success: true
+            })
+        })
+        .catch((err) => {
+            console.log('Here: ', err);
+        })
+    } else {
+        return db.createPost(req.body.title, req.body.post_text, req.session.user.id, postPlaceholder)
+        .then(() => {
+            res.json({
+                success: true
+            })
+        })
+        .catch((err) => {
+            console.log('No req.body.file: ', err);
+        })
+    }
 })
 
 //Upload post picture:
