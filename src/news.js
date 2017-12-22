@@ -16,7 +16,6 @@ export class News extends React.Component {
             this.setState({
                 articles: resp.data.articles
             })
-            console.log(resp.data);
         })
     }
     render() {

@@ -196,7 +196,7 @@ app.post('/post', uploader.single('file'), (req, res) => {
             })
         })
         .catch((err) => {
-            console.log('Here: ', err);
+            console.log(err);
         })
     } else {
         return db.createPost(req.body.title, req.body.post_text, req.session.user.id, postPlaceholder)
@@ -206,7 +206,7 @@ app.post('/post', uploader.single('file'), (req, res) => {
             })
         })
         .catch((err) => {
-            console.log('No req.body.file: ', err);
+            console.log(err);
         })
     }
 })
@@ -283,7 +283,6 @@ app.post('/unfollow-request/:id', (req, res) => {
 
 //Post a comment:
 app.post('/comment/:id', (req, res) => {
-    console.log(req.body.commentData);
     db.postComment(req.session.user.id, req.params.id, req.body.commentData)
     .then((results) => {
         res.json({
@@ -296,6 +295,7 @@ app.post('/comment/:id', (req, res) => {
 })
 //------------------------------------------------------------------------------
 //GET REQUESTS------------------------------------------------------------------
+//Get all comments for a post:
 app.get('/get-comments/:id', (req, res) => {
     db.getComments(req.params.id)
     .then((results) => {
@@ -305,6 +305,7 @@ app.get('/get-comments/:id', (req, res) => {
     })
 })
 
+//Get all contacts logged-in user is currently following:
 app.get('/following/', (req, res) => {
     db.getAuthors(req.session.user.id)
     .then((results) => {
@@ -317,6 +318,7 @@ app.get('/following/', (req, res) => {
     })
 })
 
+//Get all bookmarked articles by user:
 app.get('/favorites/', (req, res) => {
     db.getBookmarks(req.session.user.id)
     .then((results) => {
@@ -329,6 +331,7 @@ app.get('/favorites/', (req, res) => {
     })
 })
 
+//Read mode:
 app.get('/single-post/:id', (req, res) => {
     db.readPost(req.params.id, req.session.user.id)
     .then((results) => {
@@ -341,6 +344,7 @@ app.get('/single-post/:id', (req, res) => {
     })
 })
 
+//Get other user profile:
 app.get('/other-user/:id', (req, res) => {
     db.getProfile(req.params.id)
     .then((results) => {
@@ -366,6 +370,7 @@ app.get('/other-user/:id', (req, res) => {
     })
 });
 
+//Get all posts (Home):
 app.get('/all-posts', (req, res) => {
     return db.getAllPosts()
     .then((posts) => {
@@ -378,6 +383,7 @@ app.get('/all-posts', (req, res) => {
     })
 })
 
+//Get logged-in user's posts:
 app.get('/user-posts', (req, res) => {
     return db.getUserPosts(req.session.user.id)
     .then((myPosts) => {
@@ -390,6 +396,7 @@ app.get('/user-posts', (req, res) => {
     })
 })
 
+//Get logged user profile:
 app.get('/profile', (req, res) => {
     return db.getProfile(req.session.user.id)
     .then((results) => {
@@ -416,5 +423,5 @@ app.get('*', checkForSession, (req, res) => {
 });
 
 app.listen(8080, () => {
-    console.log("I'm listening")
+    console.log("Listening. . .")
 });

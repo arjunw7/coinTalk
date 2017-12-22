@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from './axios.js';
 import { Footer } from './footer';
-import { connect } from 'react-redux';
 import Header from './header';
 
 export class App extends React.Component {

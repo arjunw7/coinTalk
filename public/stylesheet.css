@@ -70,21 +70,9 @@ button {
 }
 
 .logo h1 {
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Rubik', sans-serif;
     font-size: 3.5em;
-    animation: fade-in 2s linear;
     z-index: 10;
-}
-
-@-webkit-keyframes fade-in {
-    from {
-        color: rgba( 113, 52, 239, 0.0);
-        transform: scale(0.85)
-    }
-    to {
-        color: #f4f7f5;
-        transform: scale(1)
-    }
 }
 
 ul {
@@ -114,7 +102,7 @@ ul {
 }
 
 .close-btn {
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Rubik', sans-serif;
 }
 
 .header li:hover {
@@ -260,9 +248,9 @@ ul {
     width: 60%;
     margin: 50px auto;
     font-size: 1.5em;
-    background: #7134ef;
+    background: #31ed66;
     border: none;
-    border-radius: 0;
+    border-radius: 5px;
     color: #f4f7f5;
     padding: 10px;
 }
@@ -433,12 +421,16 @@ button:hover {
 /* --------------------------------- PROFILE VIEW ------------------------------
 ------------------------------------------------------------------------------*/
 .blog-title, .blog-title span {
-    font-family: 'Ubuntu Mono', monospace;
-    font-size: 3.5em;
+    font-family: 'Rubik', sans-serif;
+    font-size: 3em;
     text-align: center;
     display: block;
     width: 100%;
     margin-bottom: 30px;
+}
+
+.blog-title.btn {
+    font-size: 2em;
 }
 
 .btn:hover {

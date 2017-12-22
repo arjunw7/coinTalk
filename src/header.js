@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from './axios.js';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import { getUserProfile } from './actions';
 import { Loading } from './loading';
 
 export class Header extends React.Component {
@@ -62,22 +60,3 @@ export class Header extends React.Component {
             )
         }
     }
-
-//REDUX INTEGRATION ------------------------------------------------------------
-//------------------------------------------------------------------------------
-//
-// const mapStateToProps = function(state) {
-//     return {
-//         loggedUser: state.loggedUser
-//     }
-// }
-//
-// const mapDispatchToProps = function(dispatch) {
-//     return {
-//         getUserProfile() {
-//             dispatch(getUserProfile());
-//         }
-//     }
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Header);

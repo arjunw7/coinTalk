@@ -41,7 +41,6 @@ export class GuestHeader extends React.Component {
             .then((resp) => {
                 if (resp.data.success) {
                     location.replace('/');
-                    console.log('Login successfull: ', resp.data);
                 }
             })
         }

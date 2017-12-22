@@ -7,10 +7,7 @@ export class PostComments extends React.Component {
         this.state = {};
     }
     handleChange(name, value) {
-        this.setState({
-            [name]: value
-        })
-        this.props.receiveData(this.state.comment);
+        this.props.receiveData(value);
     }
     render() {
         return (

@@ -84,6 +84,7 @@ export class Profile extends React.Component {
         }
         const myPosts = this.state.myPosts;
         const url = '/post/';
+        const userUrl = '/user/'
         return (
             <div>
             <Header image={this.props.image} />
@@ -102,6 +103,13 @@ export class Profile extends React.Component {
                                 <img src={post.post_picture} className="news-pic" />
                                 <div className="news-text">
                                     <h2 className="news-title post">{post.title}</h2>
+                                    <h3>@ {this.props.blog_title}</h3>
+                                    <Link to={userUrl + post.author_id}>
+                                        <div className="profile-pic">
+                                            <img src={this.props.image} />
+                                        </div>
+                                        <p className="description">By: {this.props.first_name} {this.props.last_name}</p>
+                                    </Link>
                                 </div>
                             </Link>
                         </div>

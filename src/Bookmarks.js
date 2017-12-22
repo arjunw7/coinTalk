@@ -15,7 +15,6 @@ export class Bookmarks extends React.Component {
             this.setState({
                 posts: data.results
             })
-            console.log(this.state.posts);
         })
     }
     render() {
