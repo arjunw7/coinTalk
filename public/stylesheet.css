@@ -688,6 +688,8 @@ button:hover {
 .post-text {
     width: 100%;
     min-height: 40vh;
+    line-height: 1.85em;
+    color: grey;
 }
 
 .bookmark {
