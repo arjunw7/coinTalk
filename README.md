@@ -9,4 +9,4 @@ Single-page news and blogging application focused in cryptocurrencies, and block
 
 
 ## Preview
-![menu](https://github.com/csuito/coinTalk/public/assets/menu.png)
+![menu](https://github.com/csuito/coinTalk/master/public/assets/menu.png)
